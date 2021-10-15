@@ -1,20 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../redux/actions/userAction";
 const Header = () => {
-
+const dispatch = useDispatch()
     const user = useSelector(store => store.user.user)
     return (
         <>
             <div className=''>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container">
-                    <Link to={'/'} className="navbar-brand" href="#">Navbar</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+
 
                     <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
@@ -34,7 +30,8 @@ const Header = () => {
                             {
                                 user &&
                                 <li className="nav-item">
-                                    <button className="nav-link" >Logout</button>
+                                    <button className=" btn btn-outline-secondary nav-link p-2 "
+                                            onClick={() => dispatch(logout()) } >Logout</button>
                                 </li>
                             }
                         </ul>

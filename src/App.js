@@ -8,6 +8,7 @@ import Header from "./components/header";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {login} from "./redux/actions/userAction";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const dispatch = useDispatch()
@@ -22,9 +23,9 @@ function App() {
   return (
     <Router>
       <Header/>
-    <Route exact path='/' component={() => <Dashboard/>}/>
-    <Route exact path='/news' component={() => <News/>}/>
-    <Route exact path='/login' component={() => <Login/>}/>
+    <PrivateRoute exact path='/' component={Dashboard}/>
+    <PrivateRoute exact path='/news' component={News}/>
+    <Route exact path='/login' component={Login}/>
     </Router>
   );
 }
